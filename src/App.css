@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+#loadingDiv {
+    background: linear-gradient(to bottom right, #b5ffff, #8c9ab7);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white
+}
