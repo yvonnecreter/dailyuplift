@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.css';
 import { ChakraProvider, Flex, Image, Box, Text, Center, SimpleGrid, GridItem, Heading,  Accordion,
-  AccordionItem,AccordionButton,AccordionPanel, Button, AccordionIcon, Link, Grid, Divider, } from '@chakra-ui/react';
+  AccordionItem,AccordionButton,AccordionPanel, Button, AccordionIcon, Link, Grid, Divider,useClipboard } from '@chakra-ui/react';
   import { MinusIcon, AddIcon, LinkIcon } from '@chakra-ui/icons';
   import { useRef, useEffect } from 'react';
   const users = 2000;
@@ -20,9 +20,11 @@ function App() {
       }
   }, []);
 
+  const { onCopy } = useClipboard("https://magikarp.com/");
+
   return (
     <ChakraProvider>
-    <Flex minH="100vh" w="100vw" overflow="hidden" position={"relative"}>
+    <Flex minH="100vh" w="100vw" /* overflow="hidden"  */position={"relative"}>
 
       {/* BACKGROUND */}
       <Image
@@ -137,7 +139,6 @@ function App() {
            </Text>
             </Box>
 
-           
           <Divider mt="8" borderWidth="5" borderColor="white"/>
           <Box pointerEvents={"all"}>
           <Grid templateColumns={'1fr 3fr 1fr'} flexDirection={"row"} gap={2} mt="4" color="white"  alignItems="center">
@@ -151,15 +152,15 @@ function App() {
               <GridItem>
               <SimpleGrid templateColumns={"1fr 1fr 1fr"} flexDirection={"row"} gap={2}>
               <GridItem>
-                <Link href="https://magikarp.com/">
+                <Link href="https://magikarp.com/" isExternal>
                 <Button> Invite
                   </Button></Link></GridItem>
                   <GridItem>
-                  <Link href="https://magikarp.com/">
+                  <Link href="https://magikarp.com/" isExternal>
                 <Button> Vote
                   </Button></Link>
                   </GridItem>
-                  <GridItem> <Button>
+                  <GridItem> <Button onClick={onCopy}>
                     <LinkIcon/></Button></GridItem>
               </SimpleGrid> </GridItem>
             </Grid>
