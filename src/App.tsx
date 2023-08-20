@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import { ChakraProvider, Flex, Image, Box, Text, Center, SimpleGrid, GridItem, Heading,  Accordion,
+import { ChakraProvider, Flex, Image, Box, Text, Center, Spacer, SimpleGrid, GridItem, Heading,  Accordion,
   AccordionItem,AccordionButton,AccordionPanel, Button, AccordionIcon, Link, Grid, Divider,useClipboard, Show } from '@chakra-ui/react';
   import { MinusIcon, AddIcon} from '@chakra-ui/icons';
   import { useRef, useEffect, useState} from 'react';
@@ -59,7 +59,7 @@ function App() {
         position={"absolute"} top={{base: "4", lg:"8"}} w="100%" m="4" alignItems={"center"} zIndex="0"
   color="white" pointerEvents={"none"}>
     <GridItem pointerEvents={"visible"}> 
-        <Link href="https://magikarp.com/">
+        <Link href="https://magikarp.com/" isExternal>
           <Text id="headerText" align="center" fontWeight={"bold"}>
               DAILY UPLIFT
           </Text>
@@ -83,8 +83,9 @@ function App() {
       </GridItem>
     </SimpleGrid>
 
+
       {/* CONTENT */}
-      <Center px="50" w="100%" mt={{base:"110", lg:"0"}}  mb={{base:"110", lg:"0"}} maxW="2800px">
+      <Center px="50" w="100%" mt={{base:"110", lg:"0"}}  mb={{base:"110", lg:"0"}} maxW="2800px" alignItems={"center"}>
 
       {/* FROSTED GLASS */}
       <Box
@@ -97,7 +98,7 @@ function App() {
           borderColor={"rgba(255, 255, 255, 0.2)"}
           borderWidth={"0.6px"} pointerEvents={{base:"visible", lg:"none"}}
         >
-
+          
           <SimpleGrid flexDirection={"row"} templateColumns={{base:"1fr", md:"1.5fr .3fr 1fr"}}>
             {/* WEB */}
             <Show above='md'>
@@ -150,7 +151,7 @@ function App() {
           <Box pointerEvents={"all"}>
           <Grid templateColumns={{base:"1fr 4fr", md:'1fr 3fr 1fr'}} flexDirection={"row"} gap={2} mt="4" color="white" alignItems="center">
             <GridItem>
-               <Image src="logo-4-fullscreen.png" w="100%" borderRadius="full"/>
+               <Image src="logo-4-fullscreen.png" w="100%" borderRadius="full" minH="10" minW="10"/>
               </GridItem>
               <GridItem ml="1">
                 <Heading size="md"> Daily Uplift</Heading>
@@ -160,7 +161,7 @@ function App() {
                 <GridItem/>
               </Show>
               <GridItem>
-              <SimpleGrid templateColumns={"1fr 1fr 1fr"} flexDirection={"row"} gap={2}>
+              <SimpleGrid templateColumns={"1fr 1fr 1fr"} flexDirection={"row"} gap={1}>
                   <GridItem><Link href="https://magikarp.com/" isExternal><Button> Invite</Button></Link></GridItem>
                   <GridItem><Link href="https://magikarp.com/" isExternal><Button> Vote</Button></Link> </GridItem>
                   <GridItem> <Button onClick={handleCopyLink}> {icon} </Button></GridItem>
