@@ -2,10 +2,11 @@ import React from 'react';
 
 import './App.css';
 import { ChakraProvider, Flex, Image, Box, Text, Center, Card, SimpleGrid, GridItem, Heading,  Accordion,
-  AccordionItem,AccordionButton,AccordionPanel, AccordionIcon, Link } from '@chakra-ui/react';
-  import { MinusIcon, AddIcon } from '@chakra-ui/icons';
+  AccordionItem,AccordionButton,AccordionPanel, Button, AccordionIcon, Link, AspectRatio, Grid, Divider, } from '@chakra-ui/react';
+  import { MinusIcon, AddIcon, ChevronDownIcon, LinkIcon } from '@chakra-ui/icons';
   import { useRef, useEffect, useState } from 'react';
   const numSvgs = 10;
+  const users = 2000;
 
 function App() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -22,7 +23,7 @@ function App() {
 
   return (
     <ChakraProvider>
-    <Flex h="100vh" w="100vw" overflow="hidden" position={"relative"}>
+    <Flex minH="100vh" w="100vw" overflow="hidden" position={"relative"}>
 
       {/* BACKGROUND */}
       <Image
@@ -74,9 +75,10 @@ function App() {
           borderRadius={"md"}
           backdropFilter="blur(30px)"
           w="100%"
+          minH="60vh"
           p="10"
           borderColor={"rgba(255, 255, 255, 0.2)"}
-          borderWidth={"0.6px"}
+          borderWidth={"0.6px"} pointerEvents={"none"}
         >
           {/* <Center flexFlow="inherit" m="16">
                   <svg id="rgblogo" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 867.18 859.24" width="100%">
@@ -102,9 +104,14 @@ function App() {
 
           <SimpleGrid flexDirection={"row"} templateColumns={"1.5fr .4fr 1fr"}>
             <GridItem position={"relative"} h="100%" w="100%" maxH="100%" maxW="100%">
-              <Box>
-                
-              </Box>
+            <Box filter="auto" dropShadow={"lg"} position="absolute" w="150%" left="-80%">
+                <Box position="relative" dropShadow={"lg"}>
+                <Image src="leaves.png" fallbackSrc="leaves.png" maxH="100%"/></Box>
+             </Box>
+             <Box position="absolute" >
+             <Image src="screenshot.png" dropShadow={"lg"} fallbackSrc="screenshot.png" w="100%" maxW="100%"  maxH="100%" borderRadius={"md"}/>
+             </Box>
+             
             </GridItem>
             <GridItem/>
             <GridItem alignItems={"end"}>
@@ -131,11 +138,37 @@ function App() {
            </Text>
             </Box>
 
+           
+          <Divider mt="8" borderWidth="5" borderColor="white"/>
+          <Box pointerEvents={"all"}>
+          <Grid templateColumns={'1fr 3fr 1fr'} flexDirection={"row"} gap={2} mt="4" color="white"  alignItems="center">
+            <GridItem>
+               <Image src="favicon-fullres.png" w="100%"/>
+              </GridItem>
+              <GridItem ml="1">
+                <Heading size="md"> Daily Uplift</Heading>
+                <Text size="sm"> {users} Users</Text>
+              </GridItem>
+              <GridItem>
+              <SimpleGrid templateColumns={"1fr 1fr 1fr"} flexDirection={"row"} gap={2}>
+              <GridItem>
+                <Link href="http://localhost:3000/">
+                <Button> Invite
+                  </Button></Link></GridItem>
+                  <GridItem>
+                  <Link href="http://localhost:3000/">
+                <Button> Vote
+                  </Button></Link>
+                  </GridItem>
+                  <GridItem> <Button>
+                    <LinkIcon/></Button></GridItem>
+              </SimpleGrid> </GridItem>
+            </Grid>
+            <Divider mt="4" borderWidth="5" borderColor="white"/>
 
            <Heading color="white" mt={8} size="md" fontWeight="normal">
                Common Questions
           </Heading>
-
            <Accordion allowMultiple color="white" mt={4}>
           <AccordionItem>
             <h2>
@@ -179,7 +212,7 @@ function App() {
             )}
           </AccordionItem>
 </Accordion>
-
+</Box>
             </GridItem>
           </SimpleGrid>
         </Box>
