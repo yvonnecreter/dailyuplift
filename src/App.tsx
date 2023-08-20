@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import { ChakraProvider, Flex, Image, Box, Text, Center, Spacer, SimpleGrid, GridItem, Heading,  Accordion,
+import { ChakraProvider, Flex, Image, Box, Text, Center, SimpleGrid, GridItem, Heading,  Accordion,
   AccordionItem,AccordionButton,AccordionPanel, Button, AccordionIcon, Link, Grid, Divider,useClipboard, Show } from '@chakra-ui/react';
   import { MinusIcon, AddIcon} from '@chakra-ui/icons';
   import { useRef, useEffect, useState} from 'react';
