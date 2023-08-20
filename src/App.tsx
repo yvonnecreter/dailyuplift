@@ -1,11 +1,10 @@
 import React from 'react';
 
 import './App.css';
-import { ChakraProvider, Flex, Image, Box, Text, Center, Card, SimpleGrid, GridItem, Heading,  Accordion,
-  AccordionItem,AccordionButton,AccordionPanel, Button, AccordionIcon, Link, AspectRatio, Grid, Divider, } from '@chakra-ui/react';
-  import { MinusIcon, AddIcon, ChevronDownIcon, LinkIcon } from '@chakra-ui/icons';
-  import { useRef, useEffect, useState } from 'react';
-  const numSvgs = 10;
+import { ChakraProvider, Flex, Image, Box, Text, Center, SimpleGrid, GridItem, Heading,  Accordion,
+  AccordionItem,AccordionButton,AccordionPanel, Button, AccordionIcon, Link, Grid, Divider, } from '@chakra-ui/react';
+  import { MinusIcon, AddIcon, LinkIcon } from '@chakra-ui/icons';
+  import { useRef, useEffect } from 'react';
   const users = 2000;
 
 function App() {
@@ -35,7 +34,7 @@ function App() {
         w="100%"
         position="absolute"
       />
-      <iframe ref={iframeRef} src='https://my.spline.design/untitled-fb3c918ebc2d7e5f3cf239e1e84c4f90/'
+      <iframe ref={iframeRef} title="shapes" src='https://my.spline.design/untitled-fb3c918ebc2d7e5f3cf239e1e84c4f90/'
       width='100%' frameBorder='0' height='100%'
       style={{ width:'100%', height:'100%', position:"absolute", objectFit:"cover",
       opacity:"0%", transition: `opacity 5s ease-in-out`}}/>
