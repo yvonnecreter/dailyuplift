@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.css';
 import { ChakraProvider, Flex, Image, Box, Text, Center, SimpleGrid, GridItem, Heading,  Accordion,
-  AccordionItem,AccordionButton,AccordionPanel, Button, AccordionIcon, Link, Grid, Divider,useClipboard } from '@chakra-ui/react';
+  AccordionItem,AccordionButton,AccordionPanel, Button, AccordionIcon, Link, Grid, Divider,useClipboard, Show } from '@chakra-ui/react';
   import { MinusIcon, AddIcon, LinkIcon } from '@chakra-ui/icons';
   import { useRef, useEffect } from 'react';
   const users = 2000;
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <ChakraProvider>
-    <Flex minH="100vh" w="100vw" /* overflow="hidden"  */position={"relative"}>
+    <Flex minH="100vh" w="100vw" h="auto" overflow="hidden"  position={"relative"}>
 
       {/* BACKGROUND */}
       <Image
@@ -41,8 +41,9 @@ function App() {
       style={{ width:'100%', height:'100%', position:"absolute", objectFit:"cover",
       opacity:"0%", transition: `opacity 5s ease-in-out`}}/>
       
-      
-         <SimpleGrid flexDirection={"row"} templateColumns={"1fr 1fr 1fr 1fr 1fr"} position={"absolute"} top="8" w="100%" m="4" alignItems={"center"} zIndex="0"
+      {/* HEADER */}
+        <SimpleGrid flexDirection={"row"} templateColumns={{base:"1fr .2fr 1fr 1fr 1fr",sm:"1fr 1fr 1fr 1fr 1fr"}} 
+        position={"absolute"} top={{base: "4", lg:"8"}} w="100%" m="4" alignItems={"center"} zIndex="0"
   color="white" pointerEvents={"none"}>
     <GridItem pointerEvents={"visible"}> 
         <Link href="https://magikarp.com/">
@@ -70,7 +71,7 @@ function App() {
     </SimpleGrid>
 
       {/* CONTENT */}
-      <Center px="50" w="100%" >
+      <Center px="50" w="100%" mt={{base:"110", lg:"0"}}  mb={{base:"110", lg:"0"}}>
       <Box
           bg="rgba(255, 255, 255, 0.2)"
           borderRadius={"md"}
@@ -79,7 +80,7 @@ function App() {
           minH="60vh"
           p="10"
           borderColor={"rgba(255, 255, 255, 0.2)"}
-          borderWidth={"0.6px"} pointerEvents={"none"}
+          borderWidth={"0.6px"} pointerEvents={{base:"visible", lg:"none"}}
         >
           {/* <Center flexFlow="inherit" m="16">
                   <svg id="rgblogo" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 867.18 859.24" width="100%">
@@ -103,19 +104,21 @@ function App() {
                   </svg>
                 </Center> */}
 
-          <SimpleGrid flexDirection={"row"} templateColumns={"1.5fr .4fr 1fr"}>
-            <GridItem position={"relative"} h="100%" w="100%" maxH="100%" maxW="100%">
-            <Box filter="auto" dropShadow={"lg"} position="absolute" w="150%" left="-80%">
-                <Box position="relative" dropShadow={"lg"}>
-                <Image src="leaves.png" fallbackSrc="leaves.png" maxH="100%"/></Box>
+          <SimpleGrid flexDirection={"row"} templateColumns={{base:"1fr", sm:"1.5fr .4fr 1fr"}}>
+            {/* WEB */}
+            <Show above='sm'>
+            <GridItem position={"relative"} w="100%">
+            <Image src="screenshot.png" dropShadow={"lg"} fallbackSrc="screenshot.png" w="100%" borderRadius={"md"} zIndex={"1"}/>
+            <Box filter="auto" dropShadow={"lg"} position="absolute" w="150%" left="-80%" top="0" zIndex={"-1"}>
+                <Image position="relative" src="leaves.png" fallbackSrc="leaves.png" maxH="100%"  dropShadow={"lg"}/>
              </Box>
              <Box position="absolute" >
-             <Image src="screenshot.png" dropShadow={"lg"} fallbackSrc="screenshot.png" w="100%" maxW="100%"  maxH="100%" borderRadius={"md"}/>
              </Box>
-             
             </GridItem>
+            </Show>
+
             <GridItem/>
-            <GridItem alignItems={"end"}>
+            <GridItem alignItems={"end"} zIndex={"1"}>
             <Text color="white" mt={4} size="xs" fontWeight="light">
                 Start your day with a smile to your inbox
             </Text>
@@ -126,6 +129,16 @@ function App() {
           <Text color="white" mt={4} fontSize="md" >
             DAILY UPLIFT is a Discord bot that sends you positive messages every day via Discord DM. It’s designed to help brighten your day and provide a daily dose of positivity and motivation. With Daily Uplift, you can start each day with an uplifting message and a smile on your face.
           </Text>
+
+          {/* MOBILE */}
+          <Show below='sm'>
+            <GridItem position={"relative"} w="100%" mt="8" flexFlow={"row"}>
+            <Image src="screenshot.png" dropShadow={"lg"} top="0" fallbackSrc="screenshot.png" w="100%" borderRadius={"md"} zIndex={1}/>
+              <Box filter="auto" position="absolute"  dropShadow={"lg"} top="0%" w="100%" zIndex={-1}> 
+               <Image src="leaves.png" position={"relative"} fallbackSrc="leaves.png" left="-80%" maxWidth="120%" zIndex={-1}/>
+              </Box>
+            </GridItem>
+          </Show>
 
           <Box color="white" mt={8} fontStyle="italic" fontSize="sm" display="grid" gridGap={4}>
           <Text>
@@ -141,27 +154,22 @@ function App() {
 
           <Divider mt="8" borderWidth="5" borderColor="white"/>
           <Box pointerEvents={"all"}>
-          <Grid templateColumns={'1fr 3fr 1fr'} flexDirection={"row"} gap={2} mt="4" color="white"  alignItems="center">
+          <Grid templateColumns={{base:"1fr 4fr", sm:'1fr 3fr 1fr'}} flexDirection={"row"} gap={2} mt="4" color="white" alignItems="center">
             <GridItem>
-               <Image src="favicon-fullres.png" w="100%"/>
+               <Image src="logo-4-fullscreen.png" w="100%" borderRadius="full"/>
               </GridItem>
               <GridItem ml="1">
                 <Heading size="md"> Daily Uplift</Heading>
                 <Text size="sm"> {users} Users</Text>
               </GridItem>
+              <Show below='sm'>
+                <GridItem/>
+              </Show>
               <GridItem>
               <SimpleGrid templateColumns={"1fr 1fr 1fr"} flexDirection={"row"} gap={2}>
-              <GridItem>
-                <Link href="https://magikarp.com/" isExternal>
-                <Button> Invite
-                  </Button></Link></GridItem>
-                  <GridItem>
-                  <Link href="https://magikarp.com/" isExternal>
-                <Button> Vote
-                  </Button></Link>
-                  </GridItem>
-                  <GridItem> <Button onClick={onCopy}>
-                    <LinkIcon/></Button></GridItem>
+                  <GridItem><Link href="https://magikarp.com/" isExternal><Button> Invite</Button></Link></GridItem>
+                  <GridItem><Link href="https://magikarp.com/" isExternal><Button> Vote</Button></Link> </GridItem>
+                  <GridItem> <Button onClick={onCopy}> <LinkIcon/></Button></GridItem>
               </SimpleGrid> </GridItem>
             </Grid>
             <Divider mt="4" borderWidth="5" borderColor="white"/>
