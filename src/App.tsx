@@ -44,7 +44,7 @@ function App() {
          <SimpleGrid flexDirection={"row"} templateColumns={"1fr 1fr 1fr 1fr 1fr"} position={"absolute"} top="8" w="100%" m="4" alignItems={"center"} zIndex="0"
   color="white" pointerEvents={"none"}>
     <GridItem pointerEvents={"visible"}> 
-        <Link href="http://localhost:3000/">
+        <Link href="https://magikarp.com/">
           <Text id="headerText" align="center" fontWeight={"bold"}>
               DAILY UPLIFT
           </Text>
@@ -152,11 +152,11 @@ function App() {
               <GridItem>
               <SimpleGrid templateColumns={"1fr 1fr 1fr"} flexDirection={"row"} gap={2}>
               <GridItem>
-                <Link href="http://localhost:3000/">
+                <Link href="https://magikarp.com/">
                 <Button> Invite
                   </Button></Link></GridItem>
                   <GridItem>
-                  <Link href="http://localhost:3000/">
+                  <Link href="https://magikarp.com/">
                 <Button> Vote
                   </Button></Link>
                   </GridItem>
