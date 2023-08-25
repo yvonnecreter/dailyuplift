@@ -3,8 +3,11 @@ import React from 'react';
 import './App.css';
 import { ChakraProvider, Flex, Image, Box, Text, Center, SimpleGrid, GridItem, Heading,  Accordion,
   AccordionItem,AccordionButton,AccordionPanel, Button, AccordionIcon, Link, Grid, Divider,useClipboard, Show } from '@chakra-ui/react';
-  import { MinusIcon, AddIcon, createIcon } from '@chakra-ui/icons';
+  import { MinusIcon, AddIcon, createIcon, CloseIcon } from '@chakra-ui/icons';
   import { useRef, useEffect, useState} from 'react';
+  import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
+
   const users = 2000;
   const linkIconSVG = () => (<svg xmlns="http://www.w3.org/2000/svg" 
   height="22" viewBox="0 -960 960 960" width="22"><path fill="white" d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg>
@@ -34,6 +37,8 @@ function App() {
     onCopy();
     setIcon(checkIconSVG);
   };
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <ChakraProvider>
@@ -91,6 +96,19 @@ function App() {
       </GridItem>
     </SimpleGrid>
 
+    {/* IMAGEZOOM */}
+    {isOpen && (
+        <Box position="fixed" top="0" left="0" right="0" bottom="0" bg="rgba(0,0,0,0.9)" zIndex={5}  onClick={() => setIsOpen(false)}>
+          <CloseIcon position={"absolute"} top="25px" right="25px" color="white"/>
+          <Center position="relative" w="100%" h="100%">
+            <TransformWrapper>
+            <TransformComponent>
+            <Image src="screenshot.png" w="100%" p="2%" position="relative"/>
+          </TransformComponent>
+            </TransformWrapper>
+        </Center></Box>
+      )}
+
 
     {/* CONTENT */}
       <Center px="50" w="100%" mt={{base:"90px", md:"clamp(110px, 15vh, 120px)"}}
@@ -107,6 +125,7 @@ function App() {
           borderColor={"rgba(255, 255, 255, 0.2)"}
           borderWidth={"0.6px"} pointerEvents={{base:"visible", lg:"none"}}
         >
+
           {/* LAYOUT IN GLASS */}
           <SimpleGrid flexDirection={"row"}
           templateColumns={{base:"1fr", lg:"1.5fr .15fr 1fr"}}>
@@ -114,7 +133,8 @@ function App() {
             {/* WEB IMAGES*/}
             <Show above='lg'>
             <GridItem position={"relative"} w="100%">
-            <Image src="screenshot.png" dropShadow={"lg"} fallbackSrc="screenshot.png" w="100%" borderRadius={"md"} zIndex={"1"}/>
+            <Image src="screenshot.png" dropShadow={"lg"} fallbackSrc="screenshot.png" w="100%" borderRadius={"md"} zIndex={"1"}
+            onClick={() => setIsOpen(true)} pointerEvents={"all"}/>
             <Box filter="auto" dropShadow={"lg"} position="absolute" w="150%" left="-80%" top="0" zIndex={"-1"}>
             <Image position="relative" src="leaves.png" fallbackSrc="leaves.png" maxH="100%"  dropShadow={"lg"}/>
             </Box>
@@ -137,7 +157,8 @@ function App() {
           {/* MOBILE IMAGES*/}
           <Show below='lg'>
             <GridItem position={"relative"} w="100%" mt="8" flexFlow={"row"}>
-            <Image src="screenshot.png" dropShadow={"lg"} top="0" fallbackSrc="screenshot.png" w="100%" borderRadius={"md"} zIndex={1}/>
+            <Image src="screenshot.png" dropShadow={"lg"} top="0" fallbackSrc="screenshot.png" w="100%" borderRadius={"md"} zIndex={1}
+            onClick={() => setIsOpen(true)} />
               <Box filter="auto" position="absolute"  dropShadow={"lg"} top="0%" w="100%" zIndex={-1}> 
                <Image src="leaves.png" position={"relative"} fallbackSrc="leaves.png" left="-80%" maxWidth="120%" zIndex={-1}/>
               </Box>
@@ -160,7 +181,7 @@ function App() {
           <Box pointerEvents={"all"}>
           <Grid templateColumns={{base:"1fr 4fr", sm:'1fr 3fr 1fr'}} flexDirection={"row"} gap={2} mt="4" color="white" alignItems="center">
             <GridItem>
-               <Image src="logo-4-fullscreen.png" w="100%" borderRadius="full" minH="10" minW="10"/>
+               <Image src="logo-4-fullscreen.png" w="100%" maxH="100px" borderRadius="full" minH="10" minW="10"/>
               </GridItem>
               <GridItem ml="1">
                 <Heading size="md"> Daily Uplift</Heading>
