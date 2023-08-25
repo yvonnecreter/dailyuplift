@@ -181,7 +181,7 @@ function App() {
           <Box pointerEvents={"all"}>
           <Grid templateColumns={{base:"1fr 4fr", sm:'1fr 3fr 1fr'}} flexDirection={"row"} gap={2} mt="4" color="white" alignItems="center">
             <GridItem>
-               <Image src="logo-4-fullscreen.png" w="100%" maxH="100px" borderRadius="full" minH="10" minW="10"/>
+               <Image src="logo-4-fullscreen.png" w="100%"/*  maxW="200px"  */borderRadius="full" minH="10" minW="10"/>
               </GridItem>
               <GridItem ml="1">
                 <Heading size="md"> Daily Uplift</Heading>
