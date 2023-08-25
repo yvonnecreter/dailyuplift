@@ -222,7 +222,7 @@ function App() {
         </Center> 
      
      {/* NOISE FILTER */}
-        <svg 
+        {/* <svg 
   xmlns='http://www.w3.org/2000/svg'
   style={{position:"absolute", height:"100%", width:"100%", mixBlendMode:"color-burn", objectFit:"cover", pointerEvents:"none"}}>
   <filter id='noiseFilter'>
@@ -238,7 +238,7 @@ function App() {
     height='100%' 
     filter='url(#noiseFilter)' />
 </svg>
-    
+     */}
     </Flex>
   </ChakraProvider>
   );
