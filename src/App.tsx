@@ -109,7 +109,7 @@ function App() {
         >
           {/* LAYOUT IN GLASS */}
           <SimpleGrid flexDirection={"row"}
-          templateColumns={{base:"1fr", lg:"1.5fr .1fr 1fr"}}>
+          templateColumns={{base:"1fr", lg:"1.5fr .15fr 1fr"}}>
             
             {/* WEB IMAGES*/}
             <Show above='lg'>
