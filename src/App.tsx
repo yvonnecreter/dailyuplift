@@ -7,10 +7,10 @@ import { ChakraProvider, Flex, Image, Box, Text, Center, SimpleGrid, GridItem, H
   import { useRef, useEffect, useState} from 'react';
   const users = 2000;
   const linkIconSVG = () => (<svg xmlns="http://www.w3.org/2000/svg" 
-  height="22" viewBox="0 -960 960 960" width="22"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg>
+  height="22" viewBox="0 -960 960 960" width="22"><path fill="white" d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg>
   );
   const checkIconSVG = () => (<svg xmlns="http://www.w3.org/2000/svg" 
-  height="22" viewBox="0 -960 960 960" width="22"><path d="m381-242 453-453-43-43-410 410-211-211-43 43 254 254Zm0 85L42-496l128-128 211 211 410-410 128 128-538 538Z"/></svg>
+  height="20" viewBox="0 -960 960 960" width="22"><path fill="white" d="m381-242 453-453-43-43-410 410-211-211-43 43 254 254Zm0 85L42-496l128-128 211 211 410-410 128 128-538 538Z"/></svg>
   );
   
 
@@ -168,9 +168,9 @@ function App() {
               </GridItem>
               <GridItem colSpan={{base:2, sm:1}}>
               <SimpleGrid templateColumns={"1fr 1fr 1fr"} flexDirection={"row"} gap={1}>
-                  <GridItem><Link href="https://magikarp.com/" isExternal><Button size="sm"> Invite</Button></Link></GridItem>
-                  <GridItem><Link href="https://magikarp.com/" isExternal><Button size="sm"> Vote</Button></Link> </GridItem>
-                  <GridItem> <Button onClick={handleCopyLink} size="sm"> {icon} </Button></GridItem>
+                  <GridItem><Link href="https://magikarp.com/" isExternal><Button size="sm" colorScheme='teal'> Invite</Button></Link></GridItem>
+                  <GridItem><Link href="https://magikarp.com/" isExternal><Button size="sm" colorScheme='teal'> Vote</Button></Link> </GridItem>
+                  <GridItem> <Button onClick={handleCopyLink} size="sm" colorScheme='teal'> {icon} </Button></GridItem>
               </SimpleGrid> </GridItem>
             </Grid>
             <Divider mt="4" borderWidth="5" borderColor="white"/>
@@ -228,7 +228,7 @@ function App() {
         </Center> 
      
      {/* NOISE FILTER */}
-        <svg 
+        {/* <svg 
   xmlns='http://www.w3.org/2000/svg'
   style={{position:"absolute", height:"100%", width:"100%", mixBlendMode:"color-burn", objectFit:"cover", pointerEvents:"none"}}>
   <filter id='noiseFilter'>
@@ -243,7 +243,7 @@ function App() {
     width='100%' 
     height='100%' 
     filter='url(#noiseFilter)' />
-</svg>
+</svg> */}
     
     </Flex>
   </ChakraProvider>
