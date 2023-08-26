@@ -7,6 +7,7 @@
   pointer-events: none;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@700&display=swap');
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -45,4 +46,9 @@
     justify-content: center;
     align-items: center;
     color: white
+}
+
+.brandname {
+  font-family: "IBM Plex Mono";
+  font-weight: bold;
 }

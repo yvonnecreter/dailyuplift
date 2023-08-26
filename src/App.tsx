@@ -15,7 +15,9 @@ import { ChakraProvider, Flex, Image, Box, Text, Center, SimpleGrid, GridItem, H
   const checkIconSVG = () => (<svg xmlns="http://www.w3.org/2000/svg" 
   height="20" viewBox="0 -960 960 960" width="22"><path fill="white" d="m381-242 453-453-43-43-410 410-211-211-43 43 254 254Zm0 85L42-496l128-128 211 211 410-410 128 128-538 538Z"/></svg>
   );
-  
+  const textfont = "IBM Plex Mono";
+  const brandfont = "Azeret Mono";
+  const fontColor = "white";
 
 function App() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -42,8 +44,7 @@ function App() {
 
   return (
     <ChakraProvider>
-    <Flex minH="100vh" w="100vw" h="auto" overflow="hidden" position={"relative"} alignItems={"center"} justifyContent={"center"}>
-
+    <Flex minH="100vh" fontFamily={textfont} w="100vw" h="auto" overflow="hidden" position={"relative"} alignItems={"center"} justifyContent={"center"}>
       {/* BACKGROUND */}
       <Image
         src="bg.webp"
@@ -53,10 +54,12 @@ function App() {
         h="100%"
         w="100%"
         position="absolute"
+        filter={"auto"}
+        brightness={"0.5"}
       />
       <iframe ref={iframeRef} title="shapes" src='https://my.spline.design/untitled-fb3c918ebc2d7e5f3cf239e1e84c4f90/'
       width='100%' frameBorder='0' height='100%'
-      style={{ width:'100%', height:'100%', position:"absolute", objectFit:"cover",
+      style={{  filter: "brightness(0.5)", width:'100%', height:'100%', position:"absolute", objectFit:"cover",
       opacity:"0%", transition: `opacity 5s ease-in-out`}}/>
       
       {/* HEADER */}
@@ -65,11 +68,11 @@ function App() {
         maxW="3000px"
         position={"absolute"} top={{base: "4", lg:"8"}}
         w="100%" m="4" alignItems={"center"} zIndex="2"
-        color="white" pointerEvents={"none"}>
+        color={fontColor} pointerEvents={"none"}>
         <GridItem pointerEvents={"visible"} textAlign={"center"} zIndex="center"> 
         <Link href="https://magikarp.com/" isExternal>
         <Show above='sm'>
-          <Text id="headerText" fontWeight={"bold"} align="center">
+          <Text id="headerText" fontWeight={"bold"} align="center" fontSize="lg" fontFamily={brandfont}>
               DAILY UPLIFT
           </Text>
           </Show>
@@ -143,15 +146,19 @@ function App() {
             <GridItem/>
 
             <GridItem alignItems={"end"} zIndex={"1"}>
-            <Text color="white" mt={4} size="xs" fontWeight="light">
+            <Text color={fontColor} mt={4} size="xs" fontWeight="light">
                 Start your day with a smile to your inbox
             </Text>
-            <Heading color="white" size="3xl">
-                DAILY UPLIFT
+            <Heading color={fontColor} size="3xl" fontFamily={brandfont} mt="2">
+                Daily Uplift
           </Heading>
 
-          <Text color="white" mt={8} fontSize="md">
-            DAILY UPLIFT is a Discord bot that sends you positive messages every day via Discord DM. It’s designed to help brighten your day and provide a daily dose of positivity and motivation. With Daily Uplift, you can start each day with an uplifting message and a smile on your face.
+          <Text color={fontColor} mt={8} fontSize="md">
+          <span className="brandname">Daily Uplift</span> is a Discord bot that sends you positive messages every day via Discord DM.
+          It’s designed to help brighten your day and provide a daily dose of positivity and motivation.
+          <br/>
+          With <span className="brandname">Daily Uplift</span>
+          , you can start each day with an uplifting message and a smile on your face.
           </Text>
 
           {/* MOBILE IMAGES*/}
@@ -165,7 +172,7 @@ function App() {
             </GridItem>
           </Show>
 
-          <Box color="white" mt={8} fontStyle="italic" fontSize="sm" display="grid" gridGap={4}>
+          <Box color={fontColor} mt={8} fontStyle="italic" fontSize="sm" display="grid" gridGap={4}>
           <Text>
               "I feel so much better since my environment is as balanced as it should be!"
            </Text>
@@ -177,29 +184,29 @@ function App() {
            </Text>
             </Box>
 
-          <Divider mt="8" borderWidth="5" borderColor="white"/>
+          <Divider mt="8" borderWidth="5" borderColor={fontColor}/>
           <Box pointerEvents={"all"}>
-          <Grid templateColumns={{base:"1fr 4fr", sm:'1fr 3fr 1fr'}} flexDirection={"row"} gap={2} mt="4" color="white" alignItems="center">
+          <Grid templateColumns={{base:"1fr 4fr", sm:'1fr 3fr 1fr'}} flexDirection={"row"} gap={2} mt="4" color={fontColor} alignItems="center">
             <GridItem>
                <Image src="logo-4-fullscreen.png" w="100%"/*  maxW="200px"  */borderRadius="full" minH="10" minW="10"/>
               </GridItem>
               <GridItem ml="1">
-                <Heading size="md"> Daily Uplift</Heading>
+                <Heading size="md" fontFamily={brandfont}> Daily Uplift</Heading>
                 <Text size="sm"> {users} Users</Text>
               </GridItem>
               <GridItem colSpan={{base:2, sm:1}}>
               <SimpleGrid templateColumns={"1fr 1fr 1fr"} flexDirection={"row"} gap={1}>
-                  <GridItem><Link href="https://magikarp.com/" isExternal><Button size="sm" colorScheme='teal'> Invite</Button></Link></GridItem>
-                  <GridItem><Link href="https://magikarp.com/" isExternal><Button size="sm" colorScheme='teal'> Vote</Button></Link> </GridItem>
-                  <GridItem> <Button onClick={handleCopyLink} size="sm" colorScheme='teal'> {icon} </Button></GridItem>
+                  <GridItem><Link href="https://magikarp.com/" isExternal><Button size="sm" colorScheme='teal'  color={fontColor}> Invite</Button></Link></GridItem>
+                  <GridItem><Link href="https://magikarp.com/" isExternal><Button size="sm" colorScheme='teal' color={fontColor}> Vote</Button></Link> </GridItem>
+                  <GridItem> <Button onClick={handleCopyLink} size="sm" colorScheme='teal' color={fontColor}> {icon} </Button></GridItem>
               </SimpleGrid> </GridItem>
             </Grid>
-            <Divider mt="4" borderWidth="5" borderColor="white"/>
+            <Divider mt="4" borderWidth="5" borderColor={fontColor}/>
 
-           <Heading color="white" mt={8} size="md" fontWeight="normal">
+           <Heading color={fontColor} mt={8} size="md" fontWeight="normal" fontFamily={brandfont}>
                Common Questions
           </Heading>
-           <Accordion allowMultiple color="white" mt={4}>
+           <Accordion allowMultiple color={fontColor} borderColor={fontColor} mt={4}>
           <AccordionItem>
             <h2>
               <AccordionButton>
