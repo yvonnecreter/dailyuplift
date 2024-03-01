@@ -24,7 +24,7 @@ const inviteId = "yDJ7azYWQ9";
 const serverInviteLink = "https://discord.gg/" + inviteId;
 // const paymentLink = "https://paypal.me/ycreter";
 const paymentLink = "https://www.paypal.com/donate/?hosted_button_id=W9S7MWG44JE28";
-const contactLink = "mailto:contact@dailyuplift.com";
+// const contactLink = "mailto:contact@dailyuplift.com";
 const voteLink = serverInviteLink;
 
 function App() {
