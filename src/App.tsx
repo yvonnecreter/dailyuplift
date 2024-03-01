@@ -25,6 +25,7 @@ const serverInviteLink = "https://discord.gg/" + inviteId;
 // const paymentLink = "https://paypal.me/ycreter";
 const paymentLink = "https://www.paypal.com/donate/?hosted_button_id=W9S7MWG44JE28";
 const contactLink = "mailto:contact@dailyuplift.com";
+const voteLink = serverInviteLink;
 
 function App() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -230,8 +231,8 @@ function App() {
                     </GridItem>
                     <GridItem colSpan={{ base: 2, sm: 1 }}>
                       <SimpleGrid templateColumns={"1fr 1fr 1fr"} flexDirection={"row"} gap={1}>
-                        <GridItem><Link href={serverInviteLink} isExternal><Button size="sm" colorScheme='teal' color={fontColor}> Join</Button></Link></GridItem>
-                        <GridItem><Link href="https://magikarp.com/" isExternal><Button size="sm" colorScheme='teal' color={fontColor}> Vote</Button></Link> </GridItem>
+                        <GridItem><Link href={serverInviteLink} isExternal><Button size="sm" colorScheme='teal' color={fontColor}>Join</Button></Link></GridItem>
+                        <GridItem><Link href={voteLink} isExternal><Button size="sm" colorScheme='teal' color={fontColor}> Vote</Button></Link> </GridItem>
                         <GridItem> <Button onClick={handleCopyLink} size="sm" colorScheme='teal' color={fontColor}> {icon} </Button></GridItem>
                       </SimpleGrid> </GridItem>
                   </Grid>
