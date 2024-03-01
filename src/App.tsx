@@ -22,6 +22,9 @@ const fontColor = "white";
 const websiteLink = "https://resplendent-meringue-8a8ca4.netlify.app/";
 const inviteId = "yDJ7azYWQ9";
 const serverInviteLink = "https://discord.gg/" + inviteId;
+// const paymentLink = "https://paypal.me/ycreter";
+const paymentLink = "https://www.paypal.com/donate/?hosted_button_id=W9S7MWG44JE28";
+const contactLink = "mailto:contact@dailyuplift.com";
 
 function App() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -29,7 +32,6 @@ function App() {
 
   //Get Discord Numbers
   const [memberCount, setMemberCount] = useState(0);
-  const [botUserCount, setBotUserCount] = useState(0);
   useEffect(() => {
     const apiUrl = `https://discord.com/api/v9/invites/${inviteId}?with_counts=true&with_expiration=true;`
 
@@ -108,19 +110,24 @@ function App() {
           </GridItem>
           <GridItem />
           <GridItem pointerEvents={"visible"}>
-            <Text id="headerText" align="center">
-              MISSION
-            </Text>
+            <Link href={paymentLink} isExternal>
+              <Text id="headerText" align="center">
+
+              </Text></Link>
           </GridItem>
           <GridItem pointerEvents={"visible"}>
-            <Text id="headerText" align="center">
-              CONTACT
-            </Text>
+            <Link href={paymentLink} isExternal>
+              <Text id="headerText" align="center">
+                DONATE
+              </Text>
+            </Link>
           </GridItem>
           <GridItem pointerEvents={"visible"}>
-            <Text id="headerText" align="center">
-              JOIN
-            </Text>
+            <Link href={serverInviteLink} isExternal>
+              <Text id="headerText" align="center">
+                JOIN
+              </Text>
+            </Link>
           </GridItem>
         </SimpleGrid>
 
@@ -220,7 +227,6 @@ function App() {
                     <GridItem ml="1">
                       <Heading size="md" fontFamily={brandfont}> Daily Uplift</Heading>
                       <Text size="sm"> {memberCount} 1-Up Members</Text>
-                      {/* <Text size="sm"> {botUserCount} Bot Users</Text> */}
                     </GridItem>
                     <GridItem colSpan={{ base: 2, sm: 1 }}>
                       <SimpleGrid templateColumns={"1fr 1fr 1fr"} flexDirection={"row"} gap={1}>
