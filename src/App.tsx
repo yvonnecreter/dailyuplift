@@ -19,13 +19,12 @@ const textfont = "IBM Plex Mono";
 const brandfont = "Azeret Mono";
 const fontColor = "white";
 
-const websiteLink = "https://resplendent-meringue-8a8ca4.netlify.app/";
-const inviteId = "yDJ7azYWQ9";
+const websiteLink = "https://daily-uplift.com/";
+const inviteId = "tc5qHRmBYE";
 const serverInviteLink = "https://discord.gg/" + inviteId;
 // const paymentLink = "https://paypal.me/ycreter";
 const paymentLink = "https://www.paypal.com/donate/?hosted_button_id=W9S7MWG44JE28";
-// const contactLink = "mailto:contact@dailyuplift.com";
-const voteLink = serverInviteLink;
+const voteLink = 'https://discordbotlist.com/servers/daily-uplift/upvote';
 
 function App() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
