@@ -58,7 +58,7 @@ function App() {
     }
   }, []);
 
-  const { onCopy } = useClipboard(websiteLink);
+  const { onCopy } = useClipboard(serverInviteLink);
 
   const handleCopyLink = () => {
     onCopy();
